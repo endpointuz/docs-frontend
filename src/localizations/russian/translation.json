@@ -1,0 +1,22 @@
+{
+  "enter email": "Введите email",
+  "enter password": "Введите пароль",
+  "re-enter password": "Введите пароль еще раз",
+  "system name": "Название системы",
+  "system description": "База данных и система автоматической ценовой верификации контрактов",
+  "enter tab": "Войти",
+  "sign in tab": "Зарегистрироваться",
+  "forgot password": "Забыли пароль?",
+  "enter in system": "Войти в систему",
+  "step one": "Шаг 1",
+  "step two": "Шаг 2",
+  "company name": "Название юридического лица",
+  "TIN": "ИНН юридического лица",
+  "full name": "Ф.И.О. ответственного лица",
+  "position": "Должность",
+  "phone number": "Номер телефона для связи",
+  "continue": "Продолжить",
+  "ru": "Рус",
+  "en": "Eng",
+  "uz": "Uzb"
+}

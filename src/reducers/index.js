@@ -3,16 +3,27 @@ import { handleActions } from 'redux-actions';
 import { reducer as formReducer } from 'redux-form';
 import * as actions from '../actions';
 
-const counter = handleActions({
-  [actions.inc](state, { payload }) {
-    return payload;
+const loginFormUi = handleActions({
+  [actions.setStep](state, { payload: { step } }) {
+    return {
+      ...state, step,
+    };
   },
-  [actions.dec](state, { payload }) {
-    return payload;
+}, {
+  step: 0,
+});
+
+const languages = handleActions({
+  [actions.setActiveLanguage](state, { payload: { lang } }) {
+    return {
+      ...state,
+      active: lang,
+    };
   },
-}, 0);
+}, {});
 
 export default combineReducers({
-  counter,
+  loginFormUi,
+  languages,
   form: formReducer,
 });
