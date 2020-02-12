@@ -2,50 +2,51 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import {
-  Form, Button, Input,
+  Form, Button,
 } from 'antd';
+import { Field } from 'redux-form';
+import TextInput from '../shared/reduxFormWrappers/TextInput';
 import { setStep } from '../../actions';
 
 
-const RegistrationFormStepOne = ({
-  form,
-}) => {
+const RegistrationFormStepOne = () => {
   const dispatch = useDispatch();
 
   const [t] = useTranslation();
 
-  const handleSubmit = (e) => {
+  const handleContinueClick = (e) => {
     e.preventDefault();
-    form.validateFields((err, values) => {
-      if (!err) {
-        console.log(values);
-        dispatch(setStep({ step: 1 }));
-      }
-    });
+    dispatch(setStep({ step: 1 }));
   };
 
   return (
-    <Form layout="vertical" onSubmit={handleSubmit}>
+    <>
       <Form.Item>
-        <Input placeholder={t('company name')} size="large" />
+        <Field type="text" name="company_name" component={TextInput} placeholder={t('company name')} size="large" />
       </Form.Item>
       <Form.Item>
-        <Input placeholder={t('TIN')} size="large" />
+        <Field type="text" name="inn" component={TextInput} placeholder={t('TIN')} size="large" />
       </Form.Item>
       <Form.Item>
-        <Input placeholder={t('full name')} size="large" />
+        <Field type="text" name="fio" component={TextInput} placeholder={t('full name')} size="large" />
       </Form.Item>
       <Form.Item>
-        <Input placeholder={t('position')} size="large" />
+        <Field type="text" name="position" component={TextInput} placeholder={t('position')} size="large" />
       </Form.Item>
       <Form.Item>
-        <Input placeholder={t('phone number')} size="large" />
+        <Field type="text" name="phone" component={TextInput} placeholder={t('phone number')} size="large" />
       </Form.Item>
       <Form.Item>
-        <Button type="primary" htmlType="submit" size="large" className="w-100">{t('continue')}</Button>
+        <Button
+          type="primary"
+          htmlType="button"
+          size="large"
+          className="w-100"
+          onClick={handleContinueClick}
+        >{t('continue')}</Button>
       </Form.Item>
-    </Form>
+    </>
   );
 };
 
-export default Form.create({ name: 'registration_step_one' })(RegistrationFormStepOne);
+export default RegistrationFormStepOne;

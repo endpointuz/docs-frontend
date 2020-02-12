@@ -1,7 +1,8 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import AuthTabs from '../components/AuthTabs';
-import LoginTopBar from '../components/LoginTopBar';
+import { Link } from 'react-router-dom';
+import AuthTabs from '../../containers/AuthTabs';
+import LoginTopBar from '../../components/LoginTopBar';
 
 const Login = () => {
   const [t] = useTranslation();

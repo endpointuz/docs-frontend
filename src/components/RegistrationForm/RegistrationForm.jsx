@@ -1,6 +1,7 @@
 import React from 'react';
-import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
+import { reduxForm } from 'redux-form';
+import { Form } from 'antd';
 
 import RegistrationFormStepOne from './RegistrationFormStepOne';
 import RegistrationFormStepTwo from './RegistrationFormStepTwo';
@@ -12,15 +13,25 @@ const RegistrationsSteps = {
   1: <RegistrationFormStepTwo />,
 };
 
-const RegistrationForm = () => {
+const RegistrationForm = ({
+  handleSubmit,
+}) => {
   const step = useSelector((state) => state.loginFormUi.step);
+
+  const handleRegistrationSubmit = (formValues) => {
+    console.log(formValues);
+  };
 
   return (
     <div className="registration">
       <Steps />
-      {RegistrationsSteps[step]}
+      <Form layout="vertical" onSubmit={handleSubmit(handleRegistrationSubmit)}>
+        {RegistrationsSteps[step]}
+      </Form>
     </div>
   );
 };
 
-export default RegistrationForm;
+export default reduxForm({
+  form: 'registration',
+})(RegistrationForm);

@@ -7,6 +7,9 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist'),
   },
+  devServer: {
+    historyApiFallback: true,
+  },
   plugins: [
     new HtmlWebpackPlugin({
       template: 'index.html',

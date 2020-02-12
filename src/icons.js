@@ -13,3 +13,7 @@ export {
 export {
   default as CaredDownOutline,
 } from '@ant-design/icons/lib/outline/CaretDownOutline';
+
+export {
+  default as LoadingOutline,
+} from '@ant-design/icons/lib/outline/LoadingOutline';
