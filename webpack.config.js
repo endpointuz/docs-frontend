@@ -6,9 +6,11 @@ const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist'),
+    publicPath: '/',
   },
   devServer: {
     historyApiFallback: true,
+    port: 3000,
   },
   plugins: [
     new HtmlWebpackPlugin({

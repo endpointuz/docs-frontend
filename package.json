@@ -38,12 +38,14 @@
     "@babel/polyfill": "^7.8.3",
     "antd": "^3.26.9",
     "axios": "^0.19.2",
+    "classnames": "^2.2.6",
     "i18next": "^19.1.0",
     "lodash": "^4.17.15",
     "melanke-watchjs": "^1.5.1",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-i18next": "^11.3.1",
+    "react-input-mask": "^3.0.0-alpha.2",
     "react-redux": "^7.1.3",
     "react-router": "^5.1.2",
     "react-router-dom": "^5.1.2",
@@ -52,6 +54,7 @@
     "redux-form": "^8.3.0",
     "redux-persist": "^6.0.0",
     "redux-thunk": "^2.3.0",
-    "reselect": "^4.0.0"
+    "reselect": "^4.0.0",
+    "validator": "^12.2.0"
   }
 }

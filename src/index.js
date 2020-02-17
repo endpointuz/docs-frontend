@@ -23,7 +23,7 @@ const { store, persistor } = configureStore({
   },
 });
 
-persistor.purge();
+// persistor.purge();
 
 const activeLang = store.getState().languages.active;
 

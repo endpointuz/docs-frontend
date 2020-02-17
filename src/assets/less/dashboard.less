@@ -1,0 +1,39 @@
+.dashboard {
+  &-header {
+    display: flex;
+    justify-content: space-between;
+    box-sizing: border-box;
+    padding: 0 25px;
+  }
+
+  &-trigger {
+    &-item {
+      font-size: 18px;
+      line-height: 64px;
+      cursor: pointer;
+      transition: color 0.3s;
+      &:hover {
+        color: #1890ff;
+      }
+    }
+  }
+  &-aside {
+    display: flex;
+  }
+  &-notification {
+    padding-right: 12px;
+    .dropdown-menu {
+      color: #000000;
+    }
+  }
+  &-company {
+    padding-left: 12px;
+    height: 100%;
+    &-name {
+      margin-left: 12px;
+    }
+  }
+  &-skeleton {
+    height: 100%;
+  }
+}

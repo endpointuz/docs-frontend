@@ -2,41 +2,12 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { reduxForm, Field } from 'redux-form';
 import {
-  Form, Icon, Input, Button,
+  Form, Icon, Button,
 } from 'antd';
 
-const LoginInput = ({
-  input: { value, onChange }, ...rest
-}) => {
-  const [t] = useTranslation();
-  return (
-    <Input
-      prefix={<Icon type="mail" style={{ color: 'rgba(0,0,0,.25)' }} />}
-      placeholder={t('enter email')}
-      size="large"
-      onChange={onChange}
-      value={value}
-      {...rest}
-    />
-  );
-};
+import TextInput from '../shared/reduxFormWrappers/TextInput';
 
-const PasswordInput = ({
-  input: { value, onChange }, ...rest
-}) => {
-  const [t] = useTranslation();
-  return (
-    <Input
-      prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
-      placeholder={t('enter password')}
-      size="large"
-      type="password"
-      onChange={onChange}
-      value={value}
-      {...rest}
-    />
-  );
-};
+import { emailValidator } from '../../validators';
 
 const LoginForm = ({
   handleSubmit, handleUserLogin, submitting,
@@ -49,22 +20,25 @@ const LoginForm = ({
 
   return (
     <Form layout="vertical" onSubmit={handleSubmit(login)}>
-      <Form.Item>
-        <Field
-          name="mail"
-          type="text"
-          component={LoginInput}
-          disabled={submitting}
-        />
-      </Form.Item>
-      <Form.Item>
-        <Field
-          name="password"
-          type="password"
-          component={PasswordInput}
-          disabled={submitting}
-        />
-      </Form.Item>
+      <Field
+        name="mail"
+        type="text"
+        component={TextInput}
+        disabled={submitting}
+        prefix={<Icon type="mail" style={{ color: 'rgba(0,0,0,.25)' }} />}
+        placeholder={t('enter email')}
+        size="large"
+        validate={[emailValidator]}
+      />
+      <Field
+        name="password"
+        type="password"
+        component={TextInput}
+        disabled={submitting}
+        prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
+        placeholder={t('enter password')}
+        size="large"
+      />
       <Form.Item>
         <a href="" className="login-form-forgot">{t('forgot password')}</a>
       </Form.Item>
