@@ -14,8 +14,12 @@ export {
 } from '@ant-design/icons/lib/outline/CheckOutline';
 
 export {
-  default as CaredDownOutline,
+  default as CaretDownOutline,
 } from '@ant-design/icons/lib/outline/CaretDownOutline';
+
+export {
+  default as DownOutline,
+} from '@ant-design/icons/lib/outline/DownOutline';
 
 export {
   default as LoadingOutline,
@@ -53,6 +57,33 @@ export {
   default as BellOutline,
 } from '@ant-design/icons/lib/outline/BellOutline';
 
+export {
+  default as InboxOutline,
+} from '@ant-design/icons/lib/outline/InboxOutline';
+
+export {
+  default as CalendarOutline,
+} from '@ant-design/icons/lib/outline/CalendarOutline';
+
+export {
+  default as PaperClipOutline,
+} from '@ant-design/icons/lib/outline/PaperClipOutline';
+
+export {
+  default as DeleteOutline,
+} from '@ant-design/icons/lib/outline/DeleteOutline';
+
+export {
+  default as DownloadClipOutline,
+} from '@ant-design/icons/lib/outline/DownloadOutline';
+
+export {
+  default as CheckCircleOutline,
+} from '@ant-design/icons/lib/outline/CheckCircleOutline';
+
+export {
+  default as ExclamationCircleOutline,
+} from '@ant-design/icons/lib/outline/ExclamationCircleOutline';
 
 /**
  * Filled Icons

@@ -8,9 +8,22 @@ import Menu from '../components/Menu';
 const { Sider } = Layout;
 
 const menuItems = [
-  { key: 'add-contract', title: 'add contract', icon: 'dashboard' },
-  { key: 'my-contracts', title: 'my contracts', icon: 'form' },
-  { key: 'settings', title: 'settings', icon: 'setting' },
+  {
+    key: 'add-contract', title: 'add contract', icon: 'dashboard', type: 'plain',
+  },
+  {
+    key: 'my-contracts',
+    title: 'my contracts',
+    icon: 'form',
+    type: 'nested',
+    children: [
+      { key: 'drafts', title: 'drafts', icon: 'exclamation-circle' },
+      { key: 'approved', title: 'approved', icon: 'check-circle' },
+    ],
+  },
+  {
+    key: 'settings', title: 'settings', icon: 'setting', type: 'plain',
+  },
 ];
 
 const UserMenuContainer = () => {

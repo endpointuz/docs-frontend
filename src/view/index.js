@@ -5,7 +5,7 @@ import PrivateRoute from '../containers/PrivateRoute';
 import history from '../history';
 
 import Login from './user/Login';
-import Dashboard from './user/Dashboard';
+import Dashboard from './user/Dashboard/Dashboard';
 import Verification from '../components/Verification';
 
 

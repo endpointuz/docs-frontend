@@ -16,3 +16,11 @@ export const setActiveTabUserLoginPage = createAction('USER_LOGIN_PAGE_ACTIVE_TA
 
 export const saveUserData = createAction('USER_DATA_SAVE');
 export const clearUserData = createAction('USER_DATA_CLEAR');
+
+export const setHeaderTitle = createAction('HEADER_TITLE_SET');
+export const setHeaderPageName = createAction('HEADER_PAGE_NAME_SET');
+
+export const createContractNext = createAction('CONTRACT_CREATE_NEXT');
+
+export const showProductForm = createAction('PRODUCT_FORM_SHOW');
+export const hideProductForm = createAction('PRODUCT_FORM_HIDE');

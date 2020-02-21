@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import cn from 'classnames';
 
 const TextInput = ({
-  input = {}, meta: { touched, error, warning }, ...rest
+  input = {}, meta: { touched, error, warning }, label, ...rest
 }) => {
   const [t] = useTranslation();
   const classes = cn({
@@ -12,7 +12,7 @@ const TextInput = ({
   });
 
   return (
-    <Form.Item validateStatus={error && touched ? 'error' : null} className={classes}>
+    <Form.Item validateStatus={error && touched ? 'error' : null} className={classes} label={label}>
       <Input {...rest} {...input} />
       {touched &&
       ((error && <div className="ant-form-explain">{t(error)}</div>) ||

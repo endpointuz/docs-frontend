@@ -1,9 +1,19 @@
 import React from 'react';
-import { Layout, Icon } from 'antd';
+import { Layout } from 'antd';
 import { Switch, Route } from 'react-router-dom';
 
-import UserMenuContainer from '../../containers/UserMenuContainer';
-import UserHeaderContainer from '../../containers/UserHeaderContainer';
+/**
+ * Dashboard Layouts imports
+ */
+import UserMenuContainer from '../../../containers/UserMenuContainer';
+import UserHeaderContainer from '../../../containers/UserHeaderContainer';
+
+/**
+ * Pages imports
+ */
+import AddContract from './AddContract';
+
+import ContentHeader from '../../../components/shared/ContentHeader';
 
 const { Content } = Layout;
 
@@ -12,6 +22,7 @@ const Dashboard = () => (
     <UserMenuContainer />
     <Layout>
       <UserHeaderContainer />
+      <ContentHeader />
       <Content
         style={{
           margin: '24px 16px',
@@ -22,12 +33,15 @@ const Dashboard = () => (
       >
         <Switch>
           <Route path="/panel/add-contract" exact={true}>
-            <div>hello 1</div>
+            <AddContract />
           </Route>
           <Route path="/panel/my-contracts" exact={true}>
             <div>hello 2</div>
           </Route>
           <Route path="/panel/settings" exact={true}>
+            <div>hello 3</div>
+          </Route>
+          <Route path="/panel/my-contracts/drafts" exact={true}>
             <div>hello 3</div>
           </Route>
           <Route path="*">

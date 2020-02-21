@@ -4,8 +4,9 @@ import '@babel/polyfill';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 import { I18nextProvider } from 'react-i18next';
+import { ConfigProvider } from 'antd';
 
-import ru_RU from 'antd/lib/locale-provider/ru_RU'; // russian antd language
+import ru_RU from 'antd/es/locale/ru_RU'; // russian antd language
 import uz_UZ from './localizations/uzbek/uz_UZ'; // uzbek antd language
 
 import './assets/less/index.less';
@@ -39,7 +40,9 @@ ReactDOM.render(
   <Provider store={store}>
     <I18nextProvider i18n={i18n}>
       <PersistGate loading={null} persistor={persistor}>
-        <App />
+        <ConfigProvider locale={languages[activeLang]}>
+          <App />
+        </ConfigProvider>
       </PersistGate>
     </I18nextProvider>
   </Provider>,
