@@ -85,6 +85,19 @@ export {
   default as ExclamationCircleOutline,
 } from '@ant-design/icons/lib/outline/ExclamationCircleOutline';
 
+export {
+  default as ArrowLeftOutline,
+} from '@ant-design/icons/lib/outline/ArrowLeftOutline';
+
+export {
+  default as EditOutline,
+} from '@ant-design/icons/lib/outline/EditOutline';
+
+export {
+  default as PlusCircleOutline,
+} from '@ant-design/icons/lib/outline/PlusCircleOutline';
+
+
 /**
  * Filled Icons
  */

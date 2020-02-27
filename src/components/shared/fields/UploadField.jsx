@@ -11,26 +11,24 @@ const props = {
 
 
 const UploadInput = ({
-  label, handleSendFile, handleRemoveFile, getFieldDecorator,
+  label, handleSendFile, handleRemoveFile, defaultFileList, name,
 }) => {
   const [t] = useTranslation();
 
   return (
     <Form.Item label={label}>
-      {
-        getFieldDecorator(
-          <Dragger
-            {...props}
-            customRequest={handleSendFile}
-            onRemove={handleRemoveFile}
-          >
-            <p className="ant-upload-drag-icon">
-              <Icon type="inbox" />
-            </p>
-            <p className="ant-upload-text">{t('click for upload')}</p>
-          </Dragger>
-        )
-      }
+      <Dragger
+        {...props}
+        name={name}
+        customRequest={handleSendFile}
+        onRemove={handleRemoveFile}
+        defaultFileList={defaultFileList}
+      >
+        <p className="ant-upload-drag-icon">
+          <Icon type="inbox" />
+        </p>
+        <p className="ant-upload-text">{t('click for upload')}</p>
+      </Dragger>
     </Form.Item>
   );
 };

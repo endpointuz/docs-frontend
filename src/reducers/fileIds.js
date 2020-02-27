@@ -8,6 +8,12 @@ const fileIds = handleActions({
   [actions.removeFile](state, { payload: { file } }) {
     return state.filter((el) => el.file.uid !== file.uid);
   },
+  [actions.clearFiles]() {
+    return [];
+  },
+  [actions.addMultipleFiles](state, { payload: { files } }) {
+    return [...state, ...files];
+  },
 }, []);
 
 export default fileIds;

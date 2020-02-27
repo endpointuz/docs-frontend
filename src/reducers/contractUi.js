@@ -5,19 +5,19 @@ const contractUi = handleActions({
   [actions.createContractRequest](state) {
     return {
       ...state,
-      contractRequestState: 'request',
+      contractCreationState: 'request',
     };
   },
   [actions.createContractSuccess](state) {
     return {
       ...state,
-      contractRequestState: 'success',
+      contractCreationState: 'success',
     };
   },
   [actions.createContractFailure](state) {
     return {
       ...state,
-      contractRequestState: 'failure',
+      contractCreationState: 'failure',
     };
   },
   [actions.createProductRequest](state) {
@@ -50,10 +50,30 @@ const contractUi = handleActions({
       showProductForm: false,
     };
   },
+  [actions.publishContractRequest](state) {
+    return { ...state, contractPublishingState: 'request' };
+  },
+  [actions.publishContractSuccess](state) {
+    return { ...state, contractPublishingState: 'success' };
+  },
+  [actions.publishContractFailure](state) {
+    return { ...state, contractPublishingState: 'failure' };
+  },
+  [actions.removeProductRequest](state) {
+    return { ...state, removingProductState: 'request' };
+  },
+  [actions.removeProductFailure](state) {
+    return { ...state, removingProductState: 'failure' };
+  },
+  [actions.removeProductSuccess](state) {
+    return { ...state, removingProductState: 'success' };
+  },
 }, {
-  contractRequestState: null,
+  contractCreationState: null,
+  contractPublishingState: null,
   productRequestState: null,
   showProductForm: false,
+  removingProductState: null,
 });
 
 export default contractUi;

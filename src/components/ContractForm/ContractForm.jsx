@@ -5,6 +5,7 @@ import { Form, Button } from 'antd';
 import {
   TextField, DateField, SelectField, NumberField, UploadField,
 } from '../shared/fields';
+import moment from 'moment';
 
 /**
  * no (required)
@@ -33,9 +34,25 @@ const ContractForm = ({
   handleRemoveFile,
   ui,
   form,
+  initial = {
+    supplier_country: {},
+    supplier_bank_country: {},
+    customer_bank: {},
+    payment_conditions: {},
+    delivery_conditions: {},
+    currency: {},
+    files: [],
+  },
 }) => {
   const [t] = useTranslation();
   const { getFieldDecorator } = form;
+
+  const fileList = initial.files.map((file) => ({
+    uid: file.id,
+    name: file.file,
+    status: 'done',
+    url: file.file,
+  }));
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -49,7 +66,12 @@ const ContractForm = ({
 
   const currenciesBefore = (
     <SelectField
-      getFieldDecorator={getFieldDecorator('currency', {})}
+      getFieldDecorator={getFieldDecorator('currency', {
+        rules: [
+          { required: true, message: t('required') },
+        ],
+        initialValue: initial.currency.id,
+      })}
       options={currencies}
       withLayout={false}
       className="addon"
@@ -66,6 +88,7 @@ const ContractForm = ({
           rules: [
             { required: true, message: t('required') },
           ],
+          initialValue: initial.no,
         })}
         label={t('contract number')}
         placeholder={t('input contract number')}
@@ -75,6 +98,7 @@ const ContractForm = ({
           rules: [
             { required: true, message: t('required') },
           ],
+          initialValue: moment(initial.date),
         })}
         label={t('contract date')}
       />
@@ -83,6 +107,7 @@ const ContractForm = ({
           rules: [
             { required: true, message: t('required') },
           ],
+          initialValue: initial.customer,
         })}
         label={t('contract customer')}
         placeholder={t('input customer')}
@@ -92,6 +117,7 @@ const ContractForm = ({
           rules: [
             { required: true, message: t('required') },
           ],
+          initialValue: initial.supplier,
         })}
         label={t('contract supplier')}
         placeholder={t('input supplier')}
@@ -101,6 +127,7 @@ const ContractForm = ({
           rules: [
             { required: true, message: t('required') },
           ],
+          initialValue: initial.supplier_country.id,
         })}
         label={t('supplier country')}
         options={countries}
@@ -114,6 +141,7 @@ const ContractForm = ({
           rules: [
             { required: true, message: t('required') },
           ],
+          initialValue: initial.amount,
         })}
         label={t('contract amount')}
         addonBefore={currenciesBefore}
@@ -125,6 +153,7 @@ const ContractForm = ({
           rules: [
             { required: true, message: t('required') },
           ],
+          initialValue: initial.customer_bank.id,
         })}
         label={t('customer bank')}
         options={banks}
@@ -138,6 +167,7 @@ const ContractForm = ({
           rules: [
             { required: true, message: t('required') },
           ],
+          initialValue: initial.supplier_bank,
         })}
         label={t('supplier bank')}
         placeholder={t('input supplier bank')}
@@ -147,6 +177,7 @@ const ContractForm = ({
           rules: [
             { required: true, message: t('required') },
           ],
+          initialValue: initial.supplier_bank_country.id,
         })}
         label={t('country of suppliers bank')}
         options={countries}
@@ -160,6 +191,7 @@ const ContractForm = ({
           rules: [
             { required: true, message: t('required') },
           ],
+          initialValue: initial.delivery_conditions.id,
         })}
         label={t('supply term')}
         options={supplyTerms}
@@ -173,6 +205,7 @@ const ContractForm = ({
           rules: [
             { required: true, message: t('required') },
           ],
+          initialValue: initial.payment_conditions.id,
         })}
         label={t('payment term')}
         options={paymentTerms}
@@ -182,17 +215,14 @@ const ContractForm = ({
         disabled={ui.paymentTerms.requestState === 'request'}
       />
       <UploadField
-        getFieldDecorator={getFieldDecorator('scan', {
-          rules: [
-            { required: true, message: t('required') },
-          ],
-        })}
+        name="scan"
         label={t('contract scan')}
         handleSendFile={handleSendFile}
         handleRemoveFile={handleRemoveFile}
+        defaultFileList={fileList}
       />
       <Form.Item wrapperCol={{ offset: 8 }}>
-        <Button type="primary" htmlType="submit" loading={ui.contract.contractRequestState === 'request'} disabled={ui.contract.requestState === 'request'}>{t('continue')}</Button>
+        <Button type="primary" htmlType="submit" loading={ui.contract.contractCreationState === 'request'} disabled={ui.contract.requestState === 'request'}>{t('continue')}</Button>
       </Form.Item>
     </Form>
   );

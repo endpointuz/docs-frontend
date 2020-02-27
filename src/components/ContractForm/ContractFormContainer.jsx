@@ -11,6 +11,7 @@ import {
   getPaymentTerms,
   sendFile,
   removeFile,
+  addMultipleFiles,
 } from '../../actions';
 
 
@@ -26,7 +27,7 @@ const formItemLayout = {
 };
 
 const ContractFormContainer = ({
-  onSubmit,
+  onSubmit, isEditForm = false,
 }) => {
   const dispatch = useDispatch();
   const countries = useSelector((state) => state.countries.results);
@@ -35,6 +36,8 @@ const ContractFormContainer = ({
   const supplyTerms = useSelector((state) => state.supplyTerms.results);
   const paymentTerms = useSelector((state) => state.paymentTerms.results);
   const fileIds = useSelector((state) => state.fileIds);
+
+  const initial = useSelector((state) => state.drafts.current);
 
   const ui = useSelector((state) => ({
     countries: state.countriesUi,
@@ -51,6 +54,11 @@ const ContractFormContainer = ({
     dispatch(getBanks());
     dispatch(getSupplyTerms());
     dispatch(getPaymentTerms());
+    if (isEditForm) {
+      dispatch(addMultipleFiles({
+        files: initial.files.map((file) => ({ id: file, file: { uid: file.id } })),
+      }));
+    }
   }, []);
 
   const handleSendFile = async (file) => dispatch(sendFile(file));
@@ -61,7 +69,7 @@ const ContractFormContainer = ({
       date: formValues.date.format('YYYY-MM-DD'),
       files: fileIds.map((file) => file.id.id),
     };
-    onSubmit(normalizedData);
+    onSubmit(normalizedData, initial.id);
   };
 
   const handleRemoveFile = (file) => {
@@ -80,6 +88,7 @@ const ContractFormContainer = ({
       supplyTerms={supplyTerms}
       paymentTerms={paymentTerms}
       ui={ui}
+      initial={isEditForm ? initial : undefined}
     />
   );
 };

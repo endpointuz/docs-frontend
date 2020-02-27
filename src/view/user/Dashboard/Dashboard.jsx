@@ -12,6 +12,7 @@ import UserHeaderContainer from '../../../containers/UserHeaderContainer';
  * Pages imports
  */
 import AddContract from './AddContract';
+import DraftContracts from './DraftContracts';
 
 import ContentHeader from '../../../components/shared/ContentHeader';
 
@@ -35,13 +36,10 @@ const Dashboard = () => (
           <Route path="/panel/add-contract" exact={true}>
             <AddContract />
           </Route>
-          <Route path="/panel/my-contracts" exact={true}>
-            <div>hello 2</div>
+          <Route path="/panel/my-contracts/">
+            <DraftContracts />
           </Route>
           <Route path="/panel/settings" exact={true}>
-            <div>hello 3</div>
-          </Route>
-          <Route path="/panel/my-contracts/drafts" exact={true}>
             <div>hello 3</div>
           </Route>
           <Route path="*">

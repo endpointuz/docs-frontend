@@ -27,6 +27,10 @@ import units from './units';
 import unitsUi from './unitsUi';
 import contract from './contract';
 import contractUi from './contractUi';
+import drafts from './drafts';
+import draftsUi from './draftsUi';
+import offers from './offers';
+import offersUi from './offersUi';
 
 
 export default combineReducers({
@@ -42,6 +46,8 @@ export default combineReducers({
   tnvedsUi,
   categoriesUi,
   contractUi,
+  draftsUi,
+  offersUi,
   modals,
   languages,
   login,
@@ -57,5 +63,7 @@ export default combineReducers({
   units,
   fileIds,
   contract,
+  drafts,
+  offers,
   form: formReducer,
 });

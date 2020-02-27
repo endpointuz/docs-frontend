@@ -7,6 +7,7 @@ import { getMe } from '../actions';
 
 import Header from '../components/Header';
 import NotificationDropdown from '../components/shared/NotificationDropdown';
+import LanguageToggler from '../components/shared/LanguageToggler';
 
 const UserHeaderContainer = () => {
   const dispatch = useDispatch();
@@ -23,6 +24,9 @@ const UserHeaderContainer = () => {
 
   return (
     <Header user={userInfo}>
+      <div className="dashboard-language">
+        <LanguageToggler />
+      </div>
       <div className="dashboard-notification">
         <NotificationDropdown menu={[]} />
       </div>

@@ -10,7 +10,7 @@ import ProductList from '../ProductList';
 import {
   getCountries, getTNVEDS, getUnits, getCurrencies,
   getCategories, setHeaderTitle, showProductForm, hideProductForm,
-  createContractNext,
+  createContractNext, showListInDrafts, resetDocumentCreationData,
 } from '../../actions';
 
 
@@ -34,7 +34,7 @@ const ProductFormContainer = ({
   const units = useSelector((state) => state.units.results);
   const categories = useSelector((state) => state.categories.results);
   const tnveds = useSelector((state) => state.tnveds.results);
-  const contractId = useSelector((state) => state.contract.currentContractId);
+  const contractId = useSelector((state) => state.contract.currentDocumentId);
   const productList = useSelector((state) => state.contract.products);
 
   const ui = useSelector((state) => ({
@@ -78,7 +78,11 @@ const ProductFormContainer = ({
 
   const handleNext = (e) => {
     e.preventDefault();
-    if (hasProducts) history.push('/panel/my-contracts/drafts');
+    if (hasProducts) {
+      history.push('/panel/my-contracts/drafts');
+      dispatch(resetDocumentCreationData());
+      dispatch(showListInDrafts());
+    }
   };
 
   return (

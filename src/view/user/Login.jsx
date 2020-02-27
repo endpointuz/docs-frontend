@@ -11,8 +11,6 @@ const Login = () => {
 
   return (
     <div className="login fullscreen">
-      <SuccessModal />
-      <ErrorModal />
       <LoginTopBar />
       <div className="login-form">
         <h1 className="login-title">{t('system name')}</h1>

@@ -26,11 +26,17 @@ const dashboardUi = handleActions({
       contractCreationStep: state.contractCreationStep + 1,
     };
   },
+  [actions.resetDocumentCreationData](state) {
+    return {
+      ...state,
+      contractCreationStep: 0,
+    };
+  },
 }, {
   isMenuCollapsed: false,
   headerTitle: 'welcome',
   headerPageName: 'dashboard',
-  contractCreationStep: 1,
+  contractCreationStep: 0,
 });
 
 export default dashboardUi;

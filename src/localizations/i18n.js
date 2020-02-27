@@ -7,9 +7,9 @@ import RU from './russian/translation.json';
 i18n
   .use(initReactI18next)
   .init({
+    // lng: 'en',
     fallbackLng: 'uz',
     debug: !(process.env.NODE_ENV === 'production'),
-
     resources: {
       ru: {
         translations: RU,

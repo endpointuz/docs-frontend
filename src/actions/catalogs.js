@@ -9,12 +9,8 @@ export const getCountriesFailure = createAction('GET_COUNTRIES_FAILURE');
 export const getCountries = (params = { limit: 1000 }) => async (dispatch) => {
   dispatch(getCountriesRequest());
   try {
-    const token = localStorage.getItem('TOKEN');
     const response = await axios.get(routes.countries(), {
       params,
-      headers: {
-        Authorization: token,
-      },
     });
     dispatch(getCountriesSuccess({ countries: response.data }));
   } catch (e) {
@@ -30,12 +26,8 @@ export const getCurrenciesFailure = createAction('GET_CURRENCIES_FAILURE');
 export const getCurrencies = (params) => async (dispatch) => {
   dispatch(getCurrenciesRequest());
   try {
-    const token = localStorage.getItem('TOKEN');
     const response = await axios.get(routes.currencies(), {
       params,
-      headers: {
-        Authorization: token,
-      },
     });
     dispatch(getCurrenciesSuccess({ currencies: response.data }));
   } catch (e) {
@@ -51,12 +43,8 @@ export const getBanksFailure = createAction('GET_BANKS_FAILURE');
 export const getBanks = (params) => async (dispatch) => {
   dispatch(getBanksRequest());
   try {
-    const token = localStorage.getItem('TOKEN');
     const response = await axios.get(routes.banks(), {
       params,
-      headers: {
-        Authorization: token,
-      },
     });
     dispatch(getBanksSuccess({ banks: response.data }));
   } catch (e) {
@@ -72,12 +60,8 @@ export const getSupplyTermsFailure = createAction('GET_SUPPLY_TERMS_FAILURE');
 export const getSupplyTerms = (params) => async (dispatch) => {
   dispatch(getSupplyTermsRequest());
   try {
-    const token = localStorage.getItem('TOKEN');
     const response = await axios.get(routes.supplyTerms(), {
       params,
-      headers: {
-        Authorization: token,
-      },
     });
     dispatch(getSupplyTermsSuccess({ supplyTerms: response.data }));
   } catch (e) {
@@ -93,12 +77,8 @@ export const getPaymentTermsFailure = createAction('GET_PAYMENT_TERM_FAILURE');
 export const getPaymentTerms = (params) => async (dispatch) => {
   dispatch(getPaymentTermsRequest());
   try {
-    const token = localStorage.getItem('TOKEN');
     const response = await axios.get(routes.paymentTerms(), {
       params,
-      headers: {
-        Authorization: token,
-      },
     });
     dispatch(getPaymentTermsSuccess({ paymentTerms: response.data }));
   } catch (e) {
@@ -114,12 +94,7 @@ export const getCategoriesFailure = createAction('GET_CATEGORIES_FAILURE');
 export const getCategories = () => async (dispatch) => {
   dispatch(getCategoriesRequest());
   try {
-    const token = localStorage.getItem('TOKEN');
-    const response = await axios.get(routes.categories(), {
-      headers: {
-        Authorization: token,
-      },
-    });
+    const response = await axios.get(routes.categories());
     dispatch(getCategoriesSuccess({ categories: response.data }));
   } catch (e) {
     console.log(e);
@@ -134,12 +109,7 @@ export const getUnitsFailure = createAction('GET_UNITS_FAILURE');
 export const getUnits = () => async (dispatch) => {
   dispatch(getUnitsRequest());
   try {
-    const token = localStorage.getItem('TOKEN');
-    const response = await axios.get(routes.units(), {
-      headers: {
-        Authorization: token,
-      },
-    });
+    const response = await axios.get(routes.units());
     dispatch(getUnitsSuccess({ units: response.data }));
   } catch (e) {
     console.log(e);
@@ -154,12 +124,7 @@ export const getTNVEDSFailure = createAction('GET_TNVEDS_FAILURE');
 export const getTNVEDS = () => async (dispatch) => {
   dispatch(getTNVEDSRequest());
   try {
-    const token = localStorage.getItem('TOKEN');
-    const response = await axios.get(routes.tnveds(), {
-      headers: {
-        Authorization: token,
-      },
-    });
+    const response = await axios.get(routes.tnveds());
     dispatch(getTNVEDSSuccess({ tnveds: response.data }));
   } catch (e) {
     console.log(e);

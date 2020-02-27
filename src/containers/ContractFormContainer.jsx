@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { Steps } from 'antd';
@@ -6,7 +6,7 @@ import { Steps } from 'antd';
 import ContractForm from '../components/ContractForm';
 import ProductsForm from '../components/ProductsForm';
 
-import { createContract, createProduct } from '../actions';
+import { clearFiles, createContract, createProduct } from '../actions';
 
 const { Step } = Steps;
 
@@ -22,6 +22,7 @@ const ContractFormContainer = () => {
       Component: ContractForm,
       onSubmit: (data) => {
         dispatch(createContract(data));
+        dispatch(clearFiles());
         console.log(data);
       },
     },

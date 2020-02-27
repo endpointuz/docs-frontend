@@ -36,13 +36,25 @@ const ProductsForm = ({
   handleHideForm,
   ui,
   form,
+  defaultValues = {
+    category: {},
+    unit: {},
+    currency: {},
+    code_tnved: {},
+    manufacturer_country: {},
+  },
 }) => {
   const [t] = useTranslation();
   const { getFieldDecorator } = form;
 
   const countBefore = (
     <SelectField
-      getFieldDecorator={getFieldDecorator('unit', {})}
+      getFieldDecorator={getFieldDecorator('unit', {
+        rules: [
+          { required: true, message: t('required') },
+        ],
+        initialValue: defaultValues.unit.id,
+      })}
       options={units}
       withLayout={false}
       className="addon"
@@ -54,7 +66,12 @@ const ProductsForm = ({
 
   const priceBefore = (
     <SelectField
-      getFieldDecorator={getFieldDecorator('currency', {})}
+      getFieldDecorator={getFieldDecorator('currency', {
+        rules: [
+          { required: true, message: t('required') },
+        ],
+        initialValue: defaultValues.currency.id,
+      })}
       options={currencies}
       withLayout={false}
       className="addon"
@@ -81,6 +98,7 @@ const ProductsForm = ({
           rules: [
             { required: true, message: t('required') },
           ],
+          initialValue: defaultValues.category.id,
         })}
         label={t('product category')}
         options={categories}
@@ -94,6 +112,7 @@ const ProductsForm = ({
           rules: [
             { required: true, message: t('required') },
           ],
+          initialValue: defaultValues.name,
         })}
         label={t('product name')}
         placeholder={t('input product name')}
@@ -103,6 +122,7 @@ const ProductsForm = ({
           rules: [
             { required: true, message: t('required') },
           ],
+          initialValue: defaultValues.model,
         })}
         label={t('product model')}
         placeholder={t('input product model')}
@@ -112,6 +132,7 @@ const ProductsForm = ({
           rules: [
             { required: true, message: t('required') },
           ],
+          initialValue: defaultValues.specifications,
         })}
         label={t('product specification')}
         placeholder={t('input specification')}
@@ -121,6 +142,7 @@ const ProductsForm = ({
           rules: [
             { required: true, message: t('required') },
           ],
+          initialValue: defaultValues.count,
         })}
         label={t('count')}
         addonBefore={countBefore}
@@ -132,6 +154,7 @@ const ProductsForm = ({
           rules: [
             { required: true, message: t('required') },
           ],
+          initialValue: defaultValues.price_per_unit,
         })}
         label={t('price for unit')}
         addonBefore={priceBefore}
@@ -143,6 +166,7 @@ const ProductsForm = ({
           rules: [
             { required: true, message: t('required') },
           ],
+          initialValue: defaultValues.code_tnved.id,
         })}
         label={t('TNVED')}
         options={tnveds}
@@ -156,6 +180,7 @@ const ProductsForm = ({
           rules: [
             { required: true, message: t('required') },
           ],
+          initialValue: defaultValues.manufacturer,
         })}
         label={t('manufacturer')}
         placeholder={t('input manufacturer')}
@@ -165,6 +190,7 @@ const ProductsForm = ({
           rules: [
             { required: true, message: t('required') },
           ],
+          initialValue: defaultValues.manufacturer_country.id,
         })}
         label={t('origin country')}
         options={countries}

@@ -9,7 +9,7 @@ import rootReducer from './reducers';
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['login'],
+  whitelist: ['login', 'drafts', 'draftsUi'],
 };
 
 /* eslint-disable no-underscore-dangle */
